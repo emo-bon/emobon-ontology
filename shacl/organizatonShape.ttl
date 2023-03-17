@@ -1,0 +1,71 @@
+@prefix rdf: 		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: 		<http://www.w3.org/ns/shacl#> .
+@prefix xsd: 		<http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: 	<https://schema.org/> .
+@prefix emobon:	<https://www.embrc.eu/emo-bon/EmoBonOntology#> . 
+@prefix emobonsh:	<https://www.embrc.eu/emo-bon/EmoBonShape/> .
+				
+emobonsh:OrganizationShape
+	rdf:type		sh:NodeShape ;
+	sh:targetClass		emobon:Organization ;
+	sh:property [
+				sh:path 	schema:identifier ;
+				sh:minCount	1 ;
+				sh:maxCount	1 ;
+				sh:nodeKind	sh:IRI ;
+				] .
+
+
+
+
+@prefix rdf: 		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: 		<http://www.w3.org/ns/shacl#> .
+@prefix xsd: 		<http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: 	<https://schema.org/> .
+@prefix emobon:	<https://www.embrc.eu/emo-bon/EmoBonOntology#> . 
+@prefix emobonsh:	<https://www.embrc.eu/emo-bon/EmoBonShape/> .
+
+
+emobonsh:OrganizationShape
+	rdf:type		sh:NodeShape ;
+	sh:targetClass		emobon:Organization ;
+	sh:property [
+				sh:path 	schema:identifier ;
+				sh:minCount	1 ;
+				sh:maxCount	1 ;
+				sh:nodeKind	sh:IRI;				
+				] ;
+	sh:property [
+				sh:path 	emobon:edmoId ;
+				sh:minCount	1 ;
+				sh:maxCount	1 ;
+				sh:datatype	xsd:positiveInteger ;
+				] .				
+				
+
+
+
+@prefix rdf: 		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix sh: 		<http://www.w3.org/ns/shacl#> .
+@prefix xsd: 		<http://www.w3.org/2001/XMLSchema#> .
+@prefix schema: 	<https://schema.org/> .
+@prefix emobon:	<https://www.embrc.eu/emo-bon/EmoBonOntology#> . 
+@prefix emobonsh:	<https://www.embrc.eu/emo-bon/EmoBonShape/> .
+				
+emobonsh:OrganizationShape
+	rdf:type		sh:NodeShape ;
+	sh:targetClass		emobon:Organization ;
+	sh:property [
+				sh:path 	schema:identifier ;
+				sh:minCount	1 ;
+				sh:maxCount	1 ;
+				sh:nodeKind	sh:IRI;
+				sh:name	"Organization identifier shape"^^xsd:string ;
+				sh:description "Organization must have exactly 1 identifier and that identifier must be an IRI"^^xsd:string ;
+				] .
+				
+				
+							
