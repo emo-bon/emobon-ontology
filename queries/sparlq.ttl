@@ -1,7 +1,7 @@
 PREFIX owl: <http://www.w3.org/2002/07/owl#>
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
-PREFIX emobon: <https://www.embrc.eu/emo-bon/EmoBonOntology.rdf>
-PREFIX schema: <https://schema.org/>
+PREFIX emobon: <https://www.embrc.eu/emobon/EmoBonOntology.rdf>
+PREFIX schema: <http://schema.org/>
 
 select ?organizationIRI ?edmoId ?identifier ?legalName ?country ?street ?postalCode where { 
 	?organizationIRI 	rdf:type 			emobon:Organization ;

@@ -1,20 +1,22 @@
 @prefix xsd:	 	<http://www.w3.org/2001/XMLSchema#> .
 @prefix rdf: 		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-@prefix schema:	<https://schema.org/> .
+@prefix schema:	<http://schema.org/> .
 @prefix sdn:		<https://edmo.seadatanet.org/report/> .
-@prefix emobon: 	<https://www.embrc.eu/emo-bon/EmoBonOntology#> . 
+@prefix emobon: 	<https://www.embrc.eu/emobon/EmoBonOntology#> .
 
 
-sdn:2163 
-	rdf:type 			emobon:Organization ;
-	emobon:emdoId		 	"2163"^^xsd:positiveInteger ;
+sdn:2163 	rdf:type		emobon:Organization ;
+	emobon:edmoId		 	"2163"^^xsd:positiveInteger ;
 	schema:identifier		sdn:2163 ;
-#	schema:identifier		2163 ;
 	schema:legalName		"University of Vigo" ;
 	schema:address [
+					a 						schema:PostalAddress ;
 					schema:addressCountry	"Spain" ;
 					schema:streetAddress 	"Campus Universitario 36310" ;
-					schema:postalCode	"36310"] .
+					schema:postalCode		"36310"
+				   ] .
+
+
 				
 							
 
