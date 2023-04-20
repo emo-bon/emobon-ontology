@@ -5,6 +5,7 @@
      xmlns:sf="http://www.opengis.net/ont/sf#"
      xmlns:sh="http://www.w3.org/ns/shacl#"
      xmlns:dwc="http://rs.tdwg.org/dwc/terms/"
+     xmlns:geo="http://www.opengis.net/ont/geosparql#"
      xmlns:obo="http://purl.obolibrary.org/obo/"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
@@ -12,7 +13,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
      xmlns:schema="http://schema.org/">
-    <owl:Ontology rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf">
+    <owl:Ontology rdf:about="http://www.embrc.eu/emobon/EmoBonOntology">
         <owl:versionIRI rdf:resource="http://www.embrc.eu/emobon/v.0.0.1/EmoBonOntology.rdf"/>
     </owl:Ontology>
     
@@ -26,6 +27,12 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#wktLiteral -->
+
+    <rdfs:Datatype rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#wktLiteral"/>
     
 
 
@@ -54,18 +61,43 @@
     
 
 
-    <!-- http://www.embrc.eu/emobon/EmoBonOntology.rdf#geoLocation -->
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#broadBiome -->
 
-    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#geoLocation">
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#broadBiome">
+        <rdfs:subPropertyOf rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#hasBiome"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#geoLocation -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#geoLocation">
         <rdfs:range rdf:resource="http://www.opengis.net/ont/sf#Point"/>
     </owl:ObjectProperty>
     
 
 
-    <!-- http://www.embrc.eu/emobon/EmoBonOntology.rdf#sampleType -->
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#hasBiome -->
 
-    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#sampleType">
-        <rdfs:range rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology.rdf#SampleType"/>
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#hasBiome">
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Observatory"/>
+        <rdfs:range rdf:resource="http://purl.obolibrary.org/obo/ENVO_00000428"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#localBiome -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#localBiome">
+        <rdfs:subPropertyOf rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#hasBiome"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#sampleType -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#sampleType">
+        <rdfs:range rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SampleType"/>
     </owl:ObjectProperty>
     
 
@@ -141,28 +173,37 @@
     
 
 
-    <!-- http://www.embrc.eu/emobon/EmoBonOntology.rdf#marineRegion -->
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#marineRegion -->
 
-    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#marineRegion">
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#marineRegion">
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://www.embrc.eu/emobon/EmoBonOntology.rdf#observatoryId -->
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#observatoryId -->
 
-    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#observatoryId">
-        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology.rdf#Observatory"/>
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#observatoryId">
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Observatory"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://www.embrc.eu/emobon/EmoBonOntology.rdf#observatorySampleId -->
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#observatorySampleId -->
 
-    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#observatorySampleId">
-        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology.rdf#Observatory"/>
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#observatorySampleId">
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Observatory"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#asWKT -->
+
+    <owl:DatatypeProperty rdf:about="http://www.w3.org/2003/01/geo/wgs84_pos#asWKT">
+        <rdfs:domain rdf:resource="http://www.opengis.net/ont/sf#Geometry"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#wktLiteral"/>
     </owl:DatatypeProperty>
     
 
@@ -175,6 +216,12 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/ENVO_00000428 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/ENVO_00000428"/>
     
 
 
@@ -271,20 +318,53 @@
     
 
 
-    <!-- http://www.embrc.eu/emobon/EmoBonOntology.rdf#Observatory -->
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#Observatory -->
 
-    <owl:Class rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#Observatory">
+    <owl:Class rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#Observatory">
         <rdfs:subClassOf rdf:resource="http://schema.org/Thing"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology.rdf#observatoryId"/>
+                <owl:onProperty rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#broadBiome"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/ENVO_00000428"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#localBiome"/>
+                <owl:someValuesFrom rdf:resource="http://purl.obolibrary.org/obo/ENVO_00000428"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#geoLocation"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.opengis.net/ont/sf#Point"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#sampleType"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SampleType"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#marineRegion"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#observatoryId"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology.rdf#observatorySampleId"/>
+                <owl:onProperty rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#observatorySampleId"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
@@ -293,15 +373,15 @@
     
 
 
-    <!-- http://www.embrc.eu/emobon/EmoBonOntology.rdf#SampleType -->
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#SampleType -->
 
-    <owl:Class rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#SampleType">
+    <owl:Class rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#SampleType">
         <owl:equivalentClass>
             <owl:Class>
                 <owl:oneOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#Hard"/>
-                    <rdf:Description rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#Soil"/>
-                    <rdf:Description rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#Water"/>
+                    <rdf:Description rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#Hard"/>
+                    <rdf:Description rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#Soil"/>
+                    <rdf:Description rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#Water"/>
                 </owl:oneOf>
             </owl:Class>
         </owl:equivalentClass>
@@ -309,9 +389,25 @@
     
 
 
+    <!-- http://www.opengis.net/ont/sf#Geometry -->
+
+    <owl:Class rdf:about="http://www.opengis.net/ont/sf#Geometry">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#asWKT"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#wktLiteral"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
     <!-- http://www.opengis.net/ont/sf#Point -->
 
-    <owl:Class rdf:about="http://www.opengis.net/ont/sf#Point"/>
+    <owl:Class rdf:about="http://www.opengis.net/ont/sf#Point">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/sf#Geometry"/>
+    </owl:Class>
     
 
 
@@ -326,26 +422,26 @@
     
 
 
-    <!-- http://www.embrc.eu/emobon/EmoBonOntology.rdf#Hard -->
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#Hard -->
 
-    <owl:NamedIndividual rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#Hard">
-        <rdf:type rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology.rdf#SampleType"/>
+    <owl:NamedIndividual rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#Hard">
+        <rdf:type rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SampleType"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.embrc.eu/emobon/EmoBonOntology.rdf#Soil -->
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#Soil -->
 
-    <owl:NamedIndividual rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#Soil">
-        <rdf:type rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology.rdf#SampleType"/>
+    <owl:NamedIndividual rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#Soil">
+        <rdf:type rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SampleType"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://www.embrc.eu/emobon/EmoBonOntology.rdf#Water -->
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#Water -->
 
-    <owl:NamedIndividual rdf:about="http://www.embrc.eu/emobon/EmoBonOntology.rdf#Water">
-        <rdf:type rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology.rdf#SampleType"/>
+    <owl:NamedIndividual rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#Water">
+        <rdf:type rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SampleType"/>
     </owl:NamedIndividual>
 </rdf:RDF>
 

@@ -1,0 +1,33 @@
+@prefix emobon: 	<https://www.embrc.eu/emobon/EmoBonOntology#> .
+@prefix geo:        <http://www.opengis.net/ont/geosparql#> .
+@prefix mr: 		<http://marineregions.org/ns/ontology#> .
+@prefix rdf: 		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix obo:		<http://purl.obolibrary.org/obo/> .
+@prefix schema:		<http://schema.org/> .
+@prefix sf:         <http://www.opengis.net/ont/sf#> .
+@prefix sdn:		<https://edmo.seadatanet.org/report/> .
+@prefix xsd:	 	<http://www.w3.org/2001/XMLSchema#> .
+
+sdn:2163 	rdf:type		emobon:Organization ;
+	emobon:edmoId		 	"2163"^^xsd:positiveInteger ;
+	schema:identifier		sdn:2163 ;
+	schema:legalName		"University of Vigo" ;
+	schema:address [
+					a 						schema:PostalAddress ;
+					schema:addressCountry	"Spain" ;
+					schema:streetAddress 	"Campus Universitario 36310" ;
+					schema:postalCode		"36310"
+				   ] .
+
+emobon:emt21_so     rdf:type                        emobon:Observatory;
+					emobon:observatoryId            "EMT21";
+					emobon:observatorySampleId      "EMT21 So";
+					emobon:sampleType               emobon:Soil;
+					emobon:geoLocation [
+														a            sf:Point;
+														geo:asWKT    "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point (-8.7985 42.201944)"
+													];
+					emobon:marineRegion				mr:4889 ;
+					emobon:broadBiome				obo:ENVO_00000447 .
+
+

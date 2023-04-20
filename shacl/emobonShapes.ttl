@@ -1,0 +1,136 @@
+@prefix emobon: 	<https://www.embrc.eu/emobon/EmoBonOntology#> .
+@prefix emobonsh:	<https://www.embrc.eu/emobon/EmoBonShape/> .
+@prefix geo:        <http://www.opengis.net/ont/geosparql#> .
+@prefix mr: 		<http://marineregions.org/ns/ontology#> .
+@prefix rdf: 		<http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: 		<http://www.w3.org/2000/01/rdf-schema#> .
+@prefix obo:		<http://purl.obolibrary.org/obo/> .
+@prefix schema:		<http://schema.org/> .
+@prefix sh: 		<http://www.w3.org/ns/shacl#> .
+@prefix sf:         <http://www.opengis.net/ont/sf#> .
+@prefix sdn:		<https://edmo.seadatanet.org/report/> .
+@prefix xsd:	 	<http://www.w3.org/2001/XMLSchema#> .
+
+#sdn:2163 	rdf:type		emobon:Organization ;
+#			emobon:emdoId		 	"2163"^^xsd:positiveInteger ;
+#			schema:identifier		sdn:2163 ;
+#			schema:legalName		"University of Vigo" ;
+#			schema:address [
+#								schema:addressCountry	"Spain" ;
+#								schema:streetAddress 	"Campus Universitario 36310" ;
+#								schema:postalCode	"36310"] .
+
+
+emobonsh:OrganizationShape
+	rdf:type					sh:NodeShape ;
+	sh:targetClass				emobon:Organization ;
+	sh:property [
+				sh:path 		schema:identifier ;
+				sh:minCount		1 ;
+				sh:maxCount		1 ;
+				sh:nodeKind		sh:IRI;
+				] ;
+	sh:property [
+				sh:path 		schema:description ;
+				sh:maxCount		1 ;
+				sh:datatype 	xsd:string;
+				];
+	sh:property [
+					sh:path 		schema:legalName ;
+					sh:minCount		1 ;
+					sh:maxCount		1 ;
+					sh:datatype 	xsd:string;
+				];
+	sh:property [
+					sh:path 		schema:address ;
+					sh:minCount		1 ;
+					sh:maxCount		1 ;
+					schema:address 	schema:PostalAddress;
+				] ;
+	sh:property [
+					sh:path 		emobon:edmoId ;
+					sh:minCount		1 ;
+					sh:maxCount		1 ;
+					sh:datatype		xsd:positiveInteger ;
+				] .
+
+emobonsh:PostalAddressShape
+	rdf:type					sh:NodeShape ;
+	sh:targetClass				schema:PostalAddress ;
+	sh:property [
+									sh:path 		schema:addressCountry ;
+									sh:minCount		1 ;
+									sh:maxCount		1 ;
+									sh:datatype		xsd:string;
+								] ;
+	sh:property [
+					sh:path 		schema:streetAddress ;
+					sh:minCount		1 ;
+					sh:maxCount		1 ;
+					sh:datatype		xsd:string;
+				] ;
+	sh:property [
+					sh:path 		schema:postalCode ;
+					sh:minCount		1 ;
+					sh:maxCount		1 ;
+					sh:datatype		xsd:string;
+				] .
+
+emobonsh:ObservatoryShape
+	rdf:type					sh:NodeShape ;
+	sh:targetClass				emobon:Observatory ;
+	sh:property [
+									sh:path 		emobon:observatoryId ;
+									sh:minCount		1 ;
+									sh:maxCount		1 ;
+									sh:datatype		xsd:string;
+								] ;
+	sh:property [
+									sh:path 		emobon:observatorySampleId ;
+									sh:minCount		1 ;
+									sh:maxCount		1 ;
+									sh:datatype 	xsd:string;
+								];
+	sh:property [
+									sh:path 		emobon:sampleType ;
+									sh:minCount		1 ;
+									sh:maxCount		1 ;
+									a 				emobon:SampleType;
+								];
+	sh:property [
+									sh:path 		emobon:geoLocation ;
+									sh:minCount		1 ;
+									sh:maxCount		1 ;
+									a 				sf:Point;
+				] ;
+	sh:property [
+									sh:path 		emobon:marineRegion ;
+									sh:minCount		1 ;
+									sh:maxCount		1 ;
+									sh:nodeKind		sh:IRI;
+				] ;
+	sh:property [
+									sh:path 		emobon:broadBiome ;
+									sh:minCount		1 ;
+				] .
+
+emobonsh:PointShape
+	rdf:type					sh:NodeShape ;
+	sh:targetClass				sf:Point ;
+	sh:property [
+					sh:path 		geo:asWKT ;
+					sh:minCount		1 ;
+					sh:maxCount		1 ;
+					sh:pattern 		"<http://www.opengis.net/def/crs/OGC/1.3/CRS84>(\s)*Point(\s)*\(-?((\d+(\.\d*)?)|(\.\d+))(\s)+(\s)*-?((\d+(\.\d*)?)|(\.\d+))\)$";
+					sh:datatype 	xsd:string;
+				] .
+
+emobonsh:ENVO_00000428_Shape
+	rdf:type						sh:NodeShape ;
+	sh:targetObjectsOf				emobon:broadBiome ;
+	sh:property [
+					sh:path 		rdfs:subClassOf;
+					sh:minCount 	1;
+					sh:class 		obo:ENVO_00000428 ;
+#					sh:nodeKind 	sh:IRI ;
+				]	.
