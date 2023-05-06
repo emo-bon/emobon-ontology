@@ -129,8 +129,8 @@ emobonsh:ENVO_00000428_Shape
 	rdf:type						sh:NodeShape ;
 	sh:targetObjectsOf				emobon:broadBiome ;
 	sh:property [
-					sh:path 		rdfs:subClassOf;
-					sh:minCount 	1;
-					sh:class 		obo:ENVO_00000428 ;
-#					sh:nodeKind 	sh:IRI ;
-				]	.
+					sh:path			rdf:type ;
+					sh:minCount		1 ;
+					sh:class		obo:ENVO_00000428 ;
+				] ;
+	sh:message 						"broadBiome should be a subClass of ENVO_00000428." .

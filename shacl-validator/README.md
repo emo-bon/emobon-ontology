@@ -1,4 +1,4 @@
-Here a few simple routines for GrapghDB are provided to help users:
+Here a few simple routines for GraphDB are provided to help users:
 1. clear a named graph,
 2. update the SHACL shapes in the default SHACL graph, and
 3. retrieve the SHACL shapes from the default SHACL shape graph.
@@ -29,4 +29,6 @@ Howerever, the following code will retrieve the desired information.
     java -classpath <path to shacl-validator-1.0-SNAPSHOT.jar> org.emobon.shacl.RetrieveShaclShapes <graphDB Url> <Repository>
 
 where `<graphDB Url>` is the GraphDB instance and `<Repository>` is the repository from where SHACL shapes will be retrieved
-from the default SHACL shapes graph: http://rdf4j.org/schema/rdf4j#SHACLShapeGraph.
+from the default SHACL shapes graph: http://rdf4j.org/schema/rdf4j#SHACLShapeGraph. An example command may look as follows:
+
+    java -classpath target/shacl-validator-1.0-SNAPSHOT.jar org.emobon.shacl.RetrieveShaclShapes http://localhost:7200/ EMOBON
