@@ -1,8 +1,8 @@
+
 Here a few simple routines for GraphDB are provided to help users:
 1. clear a named graph,
 2. update the SHACL shapes in the default SHACL graph, and
 3. retrieve the SHACL shapes from the default SHACL shape graph.
-
 
 # Clear a named graph
     java -classpath <path to shacl-validator-1.0-SNAPSHOT.jar> org.emobon.shacl.ClearGraph <graphDB Url> <Repository> <named graph>

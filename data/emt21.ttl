@@ -19,6 +19,8 @@ sdn:2163 	rdf:type		emobon:Organization ;
 					schema:postalCode		"36310"
 				   ] .
 
+emobon:emt21_so_broadBiome 	rdf:type 				obo:ENVO_00000447, obo:ENVO_01000024 .
+
 emobon:emt21_so     rdf:type                        emobon:Observatory;
 					emobon:observatoryId            "EMT21";
 					emobon:observatorySampleId      "EMT21 So";
@@ -28,6 +30,4 @@ emobon:emt21_so     rdf:type                        emobon:Observatory;
 														geo:asWKT    "<http://www.opengis.net/def/crs/OGC/1.3/CRS84> Point (-8.7985 42.201944)"
 													];
 					emobon:marineRegion				mr:4889 ;
-					emobon:broadBiome [
-														a 				obo:ENVO_00000447, obo:ENVO_01000024 ;
-					] .
+					emobon:broadBiome				emobon:emt21_so_broadBiome .

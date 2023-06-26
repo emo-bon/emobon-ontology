@@ -111,6 +111,7 @@ emobonsh:ObservatoryShape
 				] ;
 	sh:property [
 									sh:path 		emobon:broadBiome ;
+									sh:class 		obo:ENVO_00000428 ;
 									sh:minCount		1 ;
 				] .
 
@@ -125,12 +126,12 @@ emobonsh:PointShape
 					sh:datatype 	xsd:string;
 				] .
 
-emobonsh:ENVO_00000428_Shape
-	rdf:type						sh:NodeShape ;
-	sh:targetObjectsOf				emobon:broadBiome ;
-	sh:property [
-					sh:path			rdf:type ;
-					sh:minCount		1 ;
-					sh:class		obo:ENVO_00000428 ;
-				] ;
-	sh:message 						"broadBiome should be a subClass of ENVO_00000428." .
+#emobonsh:ENVO_00000428_Shape
+#	rdf:type						sh:NodeShape ;
+#	sh:targetObjectsOf				emobon:broadBiome ;
+#	sh:property [
+#					sh:path			rdf:type ;
+#					sh:minCount		1 ;
+#					sh:class		obo:ENVO_00000428 ;
+#				] ;
+#	sh:message 						"broadBiome should be a subClass of ENVO_00000428." .

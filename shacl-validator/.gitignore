@@ -1,0 +1,10 @@
+*.class
+.idea
+.DS_Store
+*.iml
+target/classes
+target/generated-sources
+target/maven-archiver
+target/maven-status
+target/original-shacl-validator-1.0-SNAPSHOT.jar
+
