@@ -1,4 +1,4 @@
-The columns of the EMO BON sampling logsheets are defined in this [metadata spreadsheet](https://github.com/emo-bon/emobon-ontology-design/blob/master/vocabulary/EMOBON-logsheet-metadata.csv).
+The columns of the EMO BON sampling logsheets are defined in the [metadata spreadsheet](https://github.com/emo-bon/emobon-ontology-design/blob/master/vocabulary/EMOBON-logsheet-metadata.csv) parked here.
 
 The metadata included in this spreadsheet are the following:
 * An column that tells us if all the information for the column has been found, or comments to keep an eye on (for internal management use only)
