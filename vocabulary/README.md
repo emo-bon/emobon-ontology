@@ -3,7 +3,8 @@ The columns of the EMO BON sampling logsheets are defined in the [metadata sprea
 The metadata included in this spreadsheet are the following:
 * An column that tells us if all the information for the column has been found, or comments to keep an eye on (for internal management use only)
 * The column name in the EMO BON logsheets
-* The data type (xsd) that the cells should be filled with
+* The data type (xsd) that the cells should be filled with i the google sheets
+* The data type that the these items should be formatted as in the json/ttl files to be created from the logsheets
 * Notes regarding the formatting of those columns which contain multi-value entries (;-separated)
 * The observable property URL (or NA if not applicable)
 * The unit for the column (or NA)
