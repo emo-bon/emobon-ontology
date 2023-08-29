@@ -497,12 +497,39 @@ emobon:failure
     rdfs:range          xsd:string ; 
 .
 
+emobon:failureComment
+    a                   owl:DatatypeProperty ;
+    rdfs:isDefinedBy    <http://www.embrc.eu/emobon/EmoBonOntology> ;
+    rdfs:comment        "Desciption of failure cause"@en ;
+    rdfs:label          "sample failure comment"@en ;
+    rdfs:domain         sosa:Sample ;
+    rdfs:range          xsd:string ; 
+.
+
 #note: not decided on yet
 emobon:sampleReplicate 
     a                   owl:DatatypeProperty ;
     rdfs:isDefinedBy    <http://www.embrc.eu/emobon/EmoBonOntology> ;
     rdfs:comment        "Replicate number of the sample or Blank"@en ;
     rdfs:label          "sample replicate"@en ;
+    rdfs:domain         sosa:Sample ;
+    rdfs:range          xsd:string ; 
+.
+
+emobon:sampleDepositDate
+    a                   owl:DatatypeProperty ;
+    rdfs:isDefinedBy    <http://www.embrc.eu/emobon/EmoBonOntology> ;
+    rdfs:comment        "Date when the sample was deposited"@en ;
+    rdfs:label          "sample deposit date"@en ;
+    rdfs:domain         sosa:Sample ;
+    rdfs:range          xsd:date ; 
+.
+
+emobon:filterSizeRange
+    a                   owl:DatatypeProperty ;
+    rdfs:isDefinedBy    <http://www.embrc.eu/emobon/EmoBonOntology> ;
+    rdfs:comment        "The Range of sieve pore size used to pre-filter/pre-sort and retain the macrobenthos sample."@en ;
+    rdfs:label          "filter size range"@en ;
     rdfs:domain         sosa:Sample ;
     rdfs:range          xsd:string ; 
 .
