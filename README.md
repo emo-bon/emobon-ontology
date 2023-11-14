@@ -1,4 +1,4 @@
-This repository contains the artefacts to realize validation of Emo-Bon related data.
+This repository contains everything related to the EMO BON ontology
 
 # Directory structure
 * `+/data/`: Directory where EMO BON data translated to RDF (turtle syntax) is stored
