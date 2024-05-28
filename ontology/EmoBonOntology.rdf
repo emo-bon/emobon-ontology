@@ -12,7 +12,11 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
-     xmlns:schema="http://schema.org/">
+     xmlns:schema="http://schema.org/"
+     xmlns:emobon="http://www.embrc.eu/emobon/EmoBonOntology#"
+     xmlns:prov="http://www.w3.org/ns/prov#"
+     xmlns:sosa="http://www.w3.org/ns/sosa/"
+     xmlns:qudt="http://qudt.org/schema/qudt/">
     <owl:Ontology rdf:about="http://www.embrc.eu/emobon/EmoBonOntology">
         <owl:versionIRI rdf:resource="http://www.embrc.eu/emobon/v.0.0.1/EmoBonOntology.rdf"/>
     </owl:Ontology>
@@ -101,6 +105,15 @@
     </owl:ObjectProperty>
     
 
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#linkedToObservatory -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#linkedToObservatory">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The observatory that is linked to the sampling event.</rdfs:comment>
+        <rdfs:label xml:lang="en">is linked to observatory</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sampling"/>
+        <rdfs:range rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Observatory"/>
+    </owl:ObjectProperty>
 
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -163,11 +176,11 @@
     
 
 
-    <!-- http://www.embrc.eu/emo-bon/EmoBonOntology.rdf#edmoId -->
+    <!-- http://www.embrc.eu/emo-bon/EmoBonOntology#edmoId -->
 
-    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emo-bon/EmoBonOntology.rdf#edmoId">
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emo-bon/EmoBonOntology#edmoId">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://www.embrc.eu/emo-bon/EmoBonOntology.rdf#Organization"/>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emo-bon/EmoBonOntology#Organization"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#positiveInteger"/>
     </owl:DatatypeProperty>
     
@@ -207,6 +220,654 @@
     </owl:DatatypeProperty>
     
 
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#enaProjAccNum -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#enaProjAccNum">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">ENA project accession number associated to this observatory.</rdfs:comment>
+        <rdfs:label xml:lang="en">has ENA project accession number</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/2000/01/rdf-schema#Project"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#enaStudyAccNum -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#enaStudyAccNum">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">ENA study accession number associated to the observatory.</rdfs:comment>
+        <rdfs:label xml:lang="en">has ENA study accession number</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Observatory"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#enaSampleAccNum -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#enaSampleAccNum">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">ENA sample accession number associated with the sample.</rdfs:comment>
+        <rdfs:label xml:lang="en">has ENA sample accession number</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#hasMixsPackage -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#hasMixsPackage">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The MIxS extension for reporting of measurements and observations obtained from one or more of the environments where a sample was obtained.</rdfs:comment>
+        <rdfs:label xml:lang="en">has Mixs Package</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Observatory"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#marineRegionName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#marineRegionName">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The name of the marine region</rdfs:comment>
+        <rdfs:label xml:lang="en">Name associated with the marine region</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Observatory"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#waterColumnDepth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#waterColumnDepth">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Measument of the total depth of the water column in meters</rdfs:comment>
+        <rdfs:label xml:lang="en">Total depth of water column</rdfs:label>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                <rdf:Description rdf:about="http://www.w3.org/ns/sosa/Sampling"/>
+                <rdf:Description rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#Observatory"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#originCountry -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#originCountry">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The geographical origin of the sample as defined by the country name.</rdfs:comment>
+        <rdfs:label xml:lang="en">Country of origin of the sample</rdfs:label>
+        <rdfs:domain>
+        <owl:Class>
+            <owl:unionOf rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://www.w3.org/ns/sosa/Sampling"/>
+            <rdf:Description rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#Observatory"/>
+            </owl:unionOf>
+        </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#soilType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#soilType">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Information about the sediment type of the sample based on major constituents</rdfs:comment>
+        <rdfs:label xml:lang="en">Sediment type of a soil sample</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Observatory"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#samplingDepth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#samplingDepth">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Measurement of the sampling depth of the water column in meters</rdfs:comment>
+        <rdfs:label xml:lang="en">Sampling depth of water column</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sampling"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#sampleDepth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#sampleDepth">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Measurement of the sample depth of the water column in meters</rdfs:comment>
+        <rdfs:label xml:lang="en">Sampling depth of water column</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#tidalStage -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#tidalStage">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Tidal stage at the moment of the sampling event, expected values are: low_tide, ebb_tide, flood_tide, high_tide</rdfs:comment>
+        <rdfs:label xml:lang="en">Tidal stage</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sampling"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#storageTemp -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#storageTemp">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Temperature at which the sample was stored during a storage activity.</rdfs:comment>
+        <rdfs:label xml:lang="en">Storage temperature</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#storageLoc -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#storageLoc">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Location at which the sample was stored during a storage activity.</rdfs:comment>
+        <rdfs:label xml:lang="en">Storage location</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#longStorage -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#longStorage">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Indicates if the sample is stored long term.</rdfs:comment>
+        <rdfs:label xml:lang="en">Long storage</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#membrCut -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#membrCut">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Indicates if the membrane was cut in half after filtration</rdfs:comment>
+        <rdfs:label xml:lang="en">Membrane cut</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#filtrationTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#filtrationTime">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Indicates how long from sampling until start of filtration, 'fi' indicates filtration was done in the field.</rdfs:comment>
+        <rdfs:label xml:lang="en">Filtration time</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#hasSampleSize -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#hasSampleSize">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The size of the collected sample</rdfs:comment>
+        <rdfs:label xml:lang="en">has ENA sample accession number</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#failure -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#failure">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Indication of failure in data generation, which may have occurred at any stage of the workflow; takes True (T) or False (F) values.</rdfs:comment>
+        <rdfs:label xml:lang="en">sample failure</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#failureComment -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#failureComment">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Description of failure cause</rdfs:comment>
+        <rdfs:label xml:lang="en">sample failure comment</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#sampleReplicate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#sampleReplicate">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Replicate number of the sample or Blank</rdfs:comment>
+        <rdfs:label xml:lang="en">sample replicate</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#filterSizeRange -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#filterSizeRange">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The Range of sieve pore size used to pre-filter/pre-sort and retain the macrobenthos sample.</rdfs:comment>
+        <rdfs:label xml:lang="en">filter size range</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#lowerFilterSize -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#lowerFilterSize">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The sieve pore size used to pre-filter/pre-sort the macrobenthos sample. Materials larger than the size threshold are excluded from the sample.</rdfs:comment>
+        <rdfs:label xml:lang="en">lower filter size</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#upperFilterSize -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#upperFilterSize">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The sieve pore size used to retain the macrobenthos sample. Materials smaller than the size threshold are excluded from the sample.</rdfs:comment>
+        <rdfs:label xml:lang="en">upper filter size</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.w3.org/ns/sosa/Sample"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#associatedBatch -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#associatedBatch">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The batch associated with as sequencing run</rdfs:comment>
+        <rdfs:label xml:lang="en">associated batch</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Batch"/>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#associatedSample -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#associatedSample">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The sample associated with a batch</rdfs:comment>
+        <rdfs:label xml:lang="en">associated sample</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Batch"/>
+        <rdfs:range>
+        <rdf:Description rdf:about="http://www.w3.org/ns/sosa/Sample"/>
+        <rdf:Description rdf:about="http://www.w3.org/ns/prov#Entity"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#batchProcessingReady -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#batchProcessingReady">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Indication whether batch is processing ready</rdfs:comment>
+        <rdfs:label xml:lang="en">batch processing ready</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Batch"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#batchProductionDeployment -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#batchProductionDeployment">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Indication whether batch is ready for production deployment</rdfs:comment>
+        <rdfs:label xml:lang="en">batch production deployment</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Batch"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#batchSender -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#batchSender">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The sender of a batch</rdfs:comment>
+        <rdfs:label xml:lang="en">batch sender</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Batch"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#batchReceiver -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#batchReceiver">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The receiver of a batch</rdfs:comment>
+        <rdfs:label xml:lang="en">batch receiver</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Batch"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#batchNumber -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#batchNumber">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The batch number</rdfs:comment>
+        <rdfs:label xml:lang="en">batch number</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Batch"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#batchStatus -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#batchStatus">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The status of the batch</rdfs:comment>
+        <rdfs:label xml:lang="en">batch status</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Batch"/>
+        <rdfs:range>
+            <owl:DataRange>
+                <owl:oneOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string">
+                        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#oneOf"/>
+                        <rdf:first>manual</rdf:first>
+                        <rdf:rest>
+                        <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        </rdf:rest>
+                    </rdf:Description>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string">
+                        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#oneOf"/>
+                        <rdf:first>test</rdf:first>
+                        <rdf:rest>
+                        <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        </rdf:rest>
+                    </rdf:Description>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string">
+                        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#oneOf"/>
+                        <rdf:first>processing</rdf:first>
+                        <rdf:rest>
+                        <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        </rdf:rest>
+                    </rdf:Description>
+                    <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string">
+                        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#oneOf"/>
+                        <rdf:first>done</rdf:first>
+                        <rdf:rest>
+                        <rdf:Description rdf:about="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </owl:DataRange>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#shippingDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#shippingDate">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The date when the batch was shipped</rdfs:comment>
+        <rdfs:label xml:lang="en">shipping date</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Batch"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#arrivalDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#arrivalDate">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">The date when the batch arrived</rdfs:comment>
+        <rdfs:label xml:lang="en">arrival date</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#Batch"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#sop -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#sop">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Standard operating procedures used in the sequencing molecular work</rdfs:comment>
+        <rdfs:label xml:lang="en">relevant standard operating procedures for the sequencing work</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range>
+        <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#electronicResource -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#electronicResource">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Relevant electronic resources for the sequencing molecular work. Resources may be provided for any of the steps/methods followed</rdfs:comment>
+        <rdfs:label xml:lang="en">relevant electronic resources for the sequencing work</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range>
+        <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdf:Description rdf:about="http://www.w3.org/2001/XMLSchema#anyURI"/>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#proMockSeqReadsFile -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#proMockSeqReadsFile">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Filename given by the sequencing centre to the sequencing reads produced by the prokaryote mock community included in the same sequencing run as the sample</rdfs:comment>
+        <rdfs:label xml:lang="en">correspoding prokaryotes mock community sequencing reads filename</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range>
+        <rdf:Description rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#SequencingReadsFile"/>
+        <rdf:Description rdf:about="http://schema.org/CreativeWork"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#eukMockSeqReadsFile -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#eukMockSeqReadsFile">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Filename given by the sequencing centre to the sequencing reads produced by the eukaryote mock community included in the same sequencing run as the sample</rdfs:comment>
+        <rdfs:label xml:lang="en">corresponding eukaryotes mock community sequencing reads filename</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range>
+        <rdf:Description rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#SequencingReadsFile"/>
+        <rdf:Description rdf:about="http://schema.org/CreativeWork"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#seqReadsFile -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#seqReadsFile">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Filename given by the sequencing centre to the sequencing reads produced</rdfs:comment>
+        <rdfs:label xml:lang="en">sequencing reads filename</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range>
+        <rdf:Description rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#SequencingReadsFile"/>
+        <rdf:Description rdf:about="http://schema.org/CreativeWork"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#enaRunAccNum -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#enaRunAccNum">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">ENA run accession number associated to the sequencing run.</rdfs:comment>
+        <rdfs:label xml:lang="en">has ENA run accession number</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#dnaConcentration -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#dnaConcentration">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">DNA concentration measured, using a specified DNA concentration measurement method, after DNA extraction</rdfs:comment>
+        <rdfs:label xml:lang="en">dna concentration after extraction</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/ns/sosa/Observation"/>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#dnaQuantity_PostExtraction -->
+
+    <owl:ObjectProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#dnaQuantity_PostExtraction">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Total DNA quantity calculated from the DNA concentration measured after extraction</rdfs:comment>
+        <rdfs:label xml:lang="en">dna quantity after extraction</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range>
+        <rdf:Description rdf:about="http://www.w3.org/ns/sosa/Result"/>
+        <rdf:Description rdf:about="http://qudt.org/schema/qudt/QuantityValue"/>
+        </rdfs:range>
+    </owl:ObjectProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#pcrConditions -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#pcrConditions">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Description of reaction conditions and components of PCR in the form of 'initial denaturation:94degC_1.5min; annealing=...'. If the sample is used for metagenomics add 'metag'</rdfs:comment>
+        <rdfs:label xml:lang="en">pcr conditions</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#pcrPrimers -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#pcrPrimers">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">PCR primers that were used to amplify the sequence of the targeted gene, locus or subfragment. This field should contain all the primers used for a single PCR reaction if multiple forward or reverse primers are present in a single PCR reaction. The primer sequence should be reported in uppercase letters. If the sample is used for metagenomics add 'metag'</rdfs:comment>
+        <rdfs:label xml:lang="en">pcr primers</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#libLayout -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#libLayout">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Specify whether to expect single, paired, or other configuration of reads</rdfs:comment>
+        <rdfs:label xml:lang="en">library layout</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#analysisWorkflow -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#analysisWorkflow">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Analysis workflow followed</rdfs:comment>
+        <rdfs:label xml:lang="en">target gene</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range>
+        <owl:DataRange>
+            <owl:oneOf rdf:parseType="Collection">
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <rdf:value>METAGENOMIC</rdf:value>
+            </rdf:Description>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <rdf:value>GENOMIC</rdf:value>
+            </rdf:Description>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <rdf:value>GENOMIC SINGLE CELL</rdf:value>
+            </rdf:Description>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <rdf:value>TRANSCRIPTOMIC</rdf:value>
+            </rdf:Description>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <rdf:value>TRANSCRIPTOMIC SINGLE CELL</rdf:value>
+            </rdf:Description>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <rdf:value>METATRANSCRIPTOMIC</rdf:value>
+            </rdf:Description>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <rdf:value>SYNTHETIC</rdf:value>
+            </rdf:Description>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <rdf:value>VIRAL RNA</rdf:value>
+            </rdf:Description>
+            <rdf:Description>
+                <rdf:type rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                <rdf:value>OTHER</rdf:value>
+            </rdf:Description>
+            </owl:oneOf>
+        </owl:DataRange>
+        </rdfs:range>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#targetGene -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#targetGene">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Targeted gene or locus name for marker gene studies (e.g. for metabarcoding). If the sample is used for metagenomics add 'metag'</rdfs:comment>
+        <rdfs:label xml:lang="en">target gene</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#targetSubfragment -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#targetSubfragment">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Name of subfragment of a gene or locus. Important to e.g. identify special regions on marker genes like V6 on 16S rRNA. If the sample is used for metagenomics add 'metag'</rdfs:comment>
+        <rdfs:label xml:lang="en">target subfragment</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#nucleidAcidExtractionSource -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#nucleidAcidExtractionSource">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the material separation to recover the nucleic acid fraction from a sample</rdfs:comment>
+        <rdfs:label xml:lang="en">nucleic acid extraction</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#nucleidAcidAmplificationSource -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#nucleidAcidAmplificationSource">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">A link to a literature reference, electronic resource or a standard operating procedure (SOP), that describes the enzymatic amplification (PCR, TMA, NASBA) of specific nucleic acids. If the sample is used for metagenomics add 'metag'</rdfs:comment>
+        <rdfs:label xml:lang="en">nucleic acid amplification</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#anyURI"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#countOfLibReads -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#countOfLibReads">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Total number of clones sequenced from the library</rdfs:comment>
+        <rdfs:label xml:lang="en">library reads sequenced</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#seqMethod -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#seqMethod">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Sequencing method used; e.g. Sanger, pyrosequencing, ABI-solid</rdfs:comment>
+        <rdfs:label xml:lang="en">sequencing method</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#seqQuality -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#seqQuality">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Indicate if the sequence has been called by automatic systems (none) or undergone a manual editing procedure (e.g. by inspecting the raw data or chromatograms). Applied only for sequences that are not submitted to SRA,ENA or DRA</rdfs:comment>
+        <rdfs:label xml:lang="en">sequence quality check</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#adapters -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#adapters">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Adapters provide priming sequences for both amplification and sequencing of the sample-library fragments. Both adapters should be reported; in uppercase letters</rdfs:comment>
+        <rdfs:label xml:lang="en">adapters</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#multiplexID -->
+
+    <owl:DatatypeProperty rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#multiplexID">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:comment xml:lang="en">Molecular barcodes, called Multiplex Identifiers (MIDs), that are used to specifically tag unique samples in a sequencing run. Sequence should be reported in uppercase letters</rdfs:comment>
+        <rdfs:label xml:lang="en">multiplex identifiers</rdfs:label>
+        <rdfs:domain rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
 
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -410,6 +1071,24 @@
     </owl:Class>
     
 
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun -->
+
+    <owl:Class rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#SequencingRun">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Activity"/>
+        <rdfs:label xml:lang="en">A sequencing run</rdfs:label>
+        <rdfs:comment xml:lang="en">A sequencing run activity.</rdfs:comment>
+    </owl:Class>
+
+
+    <!-- http://www.embrc.eu/emobon/EmoBonOntology#Batch -->
+
+    <owl:Class rdf:about="http://www.embrc.eu/emobon/EmoBonOntology#Batch">
+        <rdfs:isDefinedBy rdf:resource="http://www.embrc.eu/emobon/EmoBonOntology"/>
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/ns/prov#Entity"/>
+        <rdfs:label xml:lang="en">A batch in a sequencing run</rdfs:label>
+        <rdfs:comment xml:lang="en">A batch in a sequencing run</rdfs:comment>
+    </owl:Class>
 
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
