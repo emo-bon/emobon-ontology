@@ -426,7 +426,7 @@ emobon:sampleDepth
 emobon:tidalStage
     a                   owl:DatatypeProperty ;
     rdfs:isDefinedBy    <http://www.embrc.eu/emobon/EmoBonOntology> ;
-    rdfs:comment        "Tidal stage at the moment of the sampling event, expected values are: low_tide, ebb_tide, flood_tide, high_tide"@en ;
+    rdfs:comment        "Tidal stage at the moment of the sampling event, expected values are: low_tide, ebb_tide, flood_tide, high_tide, no_tide"@en ;
     rdfs:label          "Tidal stage"@en ;
     rdfs:domain         sosa:Sampling;
     rdfs:range          xsd:string ;
