@@ -9,7 +9,7 @@
 @prefix vann: <http://purl.org/vocab/vann/> .
 @prefix sosa: <http://www.w3.org/ns/sosa/> .
 @prefix prov: <http://www.w3.org/ns/prov#> . 
-@prefix emobon: <http://www.embrc.eu/emobon/EmoBonOntology> .
+@prefix emobon: <http://www.embrc.eu/emobon/EmoBonOntology#> .
 
 <http://www.embrc.eu/emobon/EmoBonOntology>
   a owl:Ontology ;
