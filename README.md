@@ -1,5 +1,7 @@
 This repository contains everything related to the EMO BON ontology
 
+Update: semantic artefacts are now maintained at https://github.com/emo-bon/ns
+
 # Directory structure
 * `+/data/`: Directory where EMO BON data translated to RDF (turtle syntax) is stored
 * `+/exampleData`: This where example data that are used by EMO BON is store. This is for information purpose and is not 
