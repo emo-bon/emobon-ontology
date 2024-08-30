@@ -1,5 +1,7 @@
 This repository contains the artefacts to realize validation of Emo-Bon related data.
 
+Update: semantic artefacts are now maintained at https://github.com/emo-bon/ns
+
 # Directory structure
 
 # Steps to validate data
