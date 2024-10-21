@@ -405,20 +405,38 @@ emobon:soilType
 .
 
 
-emobon:samplingDepth
+emobon:minSamplingDepth
     a                   owl:DatatypeProperty ;
     rdfs:isDefinedBy    <http://www.embrc.eu/emobon/EmoBonOntology> ;
-    rdfs:comment        "Measument of the sampling depth of the water column in meters"@en ;
-    rdfs:label          "Sampling depth of water column"@en ;
+    rdfs:comment        "Measument of the minimum sampling depth of the water column in meters"@en ;
+    rdfs:label          "Min sampling depth of water column"@en ;
     rdfs:domain         sosa:Sampling;
     rdfs:range          xsd:nonNegativeInteger ;
 .
 
-emobon:sampleDepth
+emobon:maxSamplingDepth
+    a                   owl:DatatypeProperty ;
+    rdfs:isDefinedBy    <http://www.embrc.eu/emobon/EmoBonOntology> ;
+    rdfs:comment        "Measument of the maximum sampling depth of the water column in meters"@en ;
+    rdfs:label          "Max sampling depth of water column"@en ;
+    rdfs:domain         sosa:Sampling;
+    rdfs:range          xsd:nonNegativeInteger ;
+.
+
+emobon:minSampleDepth
     a                   owl:DatatypeProperty ; 
     rdfs:isDefinedBy    <http://www.embrc.eu/emobon/EmoBonOntology> ;
-    rdfs:comment        "Measument of the sample depth of the water column in meters"@en ;
-    rdfs:label          "Sampling depth of water column"@en ;
+    rdfs:comment        "Measument of the minimum sample depth of the water column in meters"@en ;
+    rdfs:label          "Min sampling depth of water column"@en ;
+    rdfs:domain         sosa:Sample;
+    rdfs:range          xsd:nonNegativeInteger ;
+.
+
+emobon:maxSampleDepth
+    a                   owl:DatatypeProperty ; 
+    rdfs:isDefinedBy    <http://www.embrc.eu/emobon/EmoBonOntology> ;
+    rdfs:comment        "Measument of the maximum sample depth of the water column in meters"@en ;
+    rdfs:label          "Max sampling depth of water column"@en ;
     rdfs:domain         sosa:Sample;
     rdfs:range          xsd:nonNegativeInteger ;
 .
