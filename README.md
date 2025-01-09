@@ -1,8 +1,15 @@
-This repository contains everything related to the EMO BON ontology
 
-**Update: semantic artefacts are now maintained at https://github.com/emo-bon/ns**
 
-# Directory structure
+# 🚨 Repository Archived
+This repository is now maintained at [https://github.com/emo-bon/ns](https://github.com/emo-bon/ns).
+
+[![Archived](https://img.shields.io/badge/status-archived-lightgrey?style=flat-square)](https://docs.github.com/en/repositories/archiving-a-github-repository/archiving-repositories)
+ 
+______
+
+
+
+### Directory structure
 * `+/data/`: Directory where EMO BON data translated to RDF (turtle syntax) is stored
 * `+/exampleData`: This where example data that are used by EMO BON is store. This is for information purpose and is not 
 actually used.
@@ -19,7 +26,7 @@ to create an extract of the ENVO ontology.
 directory contains minimal Java code to enable updates of the SHACL shapes graph in GraphDB.
 * `+/uml`: A conceptual model of the EMO BON data model is provided as a UML class diagram.
 
-# Steps to validate data
+### Steps to validate data
 The current steps assume the use of Ontotext Graph DB. Steps on how to update GraphDB with SHACL shapes etc are given 
 [here](./shacl-validator/README.md). 
 1. Load ontologies into their own named graph, i.e. https://www.embrc.eu/emobon/ontology using the GraphDB workbench
@@ -28,7 +35,7 @@ The current steps assume the use of Ontotext Graph DB. Steps on how to update Gr
 2. Load SHACL shapes. See [update SHACL shape](./shacl-validator/README.md#update-shacl-shape)
 3. Load data using GraphDB workbench.
 
-# Steps to update ENVO ontology extract
+### Steps to update ENVO ontology extract
 Pre-requisite: Ensure that [ROBOT](https://robot.obolibrary.org) is installed. 
 1. Change directory to where copy of ENVO is kept: `cd ./ontology/dependencies/envo`
 2. Dowload latest ENVO: `wget http://purl.obolibrary.org/obo/envo.owl`
